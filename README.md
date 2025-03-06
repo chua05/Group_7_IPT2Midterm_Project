@@ -1,1 +1,1 @@
-# Group_7_IPT2Midterm_Project
+# IPT2-MIDTERM-PROJECT-TEMPLATE
