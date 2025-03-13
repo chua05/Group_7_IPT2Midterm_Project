@@ -4,15 +4,15 @@
   include('partials/sidebar.php');
 
 
-  // Your PHP BACK CODE HERE
-  $sql = "SELECT * FROM Music_Artist";
+
+  $sql = "SELECT * FROM music_artists";
 
   if (!empty($_GET['search'])) {
       $search = $_GET['search'];
-      $sql = "SELECT * FROM Music_Artist WHERE nam LIKE '%$search%' OR genre LIKE '%$search%' OR country LIKE '%$search%' OR debut_year LIKE '%$search%' OR record_label LIKE '%$search%'";
+      $sql = "SELECT * FROM music_artists WHERE nam LIKE '%$search%' OR genre LIKE '%$search%' OR country LIKE '%$search%' OR debut_year LIKE '%$search%' OR record_label LIKE '%$search%'";
   }
   
-  $Music_Artist = $conn->query($sql);  
+  $music_artists = $conn->query($sql);  
   $status = '';
   if (isset($_SESSION['status'])) {
     $status = $_SESSION['status'];
@@ -21,9 +21,8 @@
 ?>
 
   <main id="main" class="main">
-
     <div class="pagetitle">
-      <h1>Music_Artist</h1>
+      <h1>Music Artist</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -41,10 +40,10 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <div>
-                  <h5 class="card-title">Default Table</h5>
+                  <h5 class="card-title">Artists</h5>
                 </div>
                 <div>
-                  <button class="btn btn-primary btn-sm mt-4 mx-3">Add Artist</button>
+                <button class="btn btn-primary btn-sm mt-4 mx-2" data-bs-toggle="modal" data-bs-target="#addMovieModal">Add Artist</button>
                 </div>
               </div>
 
@@ -64,8 +63,10 @@
                 <tbody>
           
 
-                <?php if ($Music_Artist->num_rows > 0): ?>
-                  <?php while ($row = $Music_Artist->fetch_assoc()): ?>
+                <?php
+                $counter = 1;
+                if ($music_artists->num_rows > 0): ?>
+                  <?php while ($row = $music_artists->fetch_assoc()): ?>
                     <tr>
                       <td><?php echo $counter++; ?></td>
                       <td><?php echo $row['nam']; ?></td>
@@ -123,7 +124,7 @@
                             <button class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#ViewModal<?php echo $row['artist_id']; ?>">View</button>
 
                             <!-- View Modal -->
-                            <div class="modal fade" artist_id="ViewModal<?php echo $row['artist_id']; ?>" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="ViewModal<?php echo $row['artist_id']; ?>" tabindex="-1" aria-labelledby="ViewModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -132,7 +133,7 @@
                                   </div>
                                   <div class="modal-body">
                                   <div class="mb-3">
-                                    <p><strong>artist_id No.:</strong></p>
+                                    <p><strong>artist_id#:</strong></p>
                                     <input type="text" class="form-control" value="<?php echo $counter -1 ?>" disabled>
                                   </div>
                                   <div class="mb-3">
@@ -169,7 +170,7 @@
                         <button class="btn btn-danger btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#deleteModal<?php echo $row['artist_id']; ?>">Delete</button>
 
                         <!-- Delete Modal -->
-                        <div class="modal fade" artist_id="deleteModal<?php echo $row['artist_id']; ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal<?php echo $row['artist_id']; ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-body text-center">
@@ -206,8 +207,8 @@
 
 </main><!-- End #main -->
 
-                        <!-- Create (Add Artist) Modal -->
-                        <div class="modal fade" artist_id="addMovieModal" tabindex="-1" aria-labelledby="addMovieLabel" aria-hidden="true">
+                        <!-- Create "Add Artist" Modal -->
+                        <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="addMovieLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <form action="database/create.php" method="POST">
                               <div class="modal-content">
@@ -231,6 +232,9 @@
                               <div class="mb-3">
                                 <label class="form-label">debut_year</label>
                                 <input type="year" name="debut_year" id="debut_year" class="form-control" placeholder="Enter debut_year"required>
+                              </div><div class="mb-3">
+                                <label class="form-label">record_label</label>
+                                <input type="year" name="record_label" id="record_label" class="form-control" placeholder="Enter record_label"required>
                               </div>
                             </div>
                             <div class="modal-footer">

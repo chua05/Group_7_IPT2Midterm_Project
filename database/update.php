@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $record_label = $_POST['record_label'];
 
     
-    $sql = "UPDATE Music_Artist SET 
+    $sql = "UPDATE music_artist SET 
             nam='$nam', 
             genre='$genre', 
             country='$country', 

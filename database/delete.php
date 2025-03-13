@@ -4,9 +4,9 @@ include('database.php');
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $artist_id = $_POST['artist_id'];
+    $id = $_POST['artist_id'];
 
-    $sql = "DELETE FROM Music_Artist WHERE artist_id='$artist_id'";
+    $sql = "DELETE FROM music_artists WHERE artist_id='$id'";
     
     if (mysqli_query($conn, $sql)) {
         $_SESSION['status'] = "DELETED";

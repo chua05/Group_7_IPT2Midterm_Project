@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $record_label = $_POST['record_label'];
 
     
-    $sql = "INSERT INTO Music_Artist (nam, genre, country, debut_year, record_label) VALUES ('$nam', '$genre', '$country', '$debut_year', '$record_label')";
+    $sql = "INSERT INTO music_artists (nam, genre, country, debut_year, record_label) VALUES ('$nam', '$genre', '$country', '$debut_year', '$record_label')";
 
     if (mysqli_query($conn, $sql)) {
         $_SESSION['status'] = "created";
