@@ -118,8 +118,6 @@
                             </div>
                           </div>
                         </div>
-
-
                             <!-- View Button -->
                             <button class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#ViewModal<?php echo $row['artist_id']; ?>">View</button>
 

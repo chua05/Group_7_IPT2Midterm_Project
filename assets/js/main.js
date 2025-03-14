@@ -316,21 +316,4 @@
     }, 200);
   }
 
-/*** Initialize all functionalities*/
-const init = () => {
-  setupFormValidation();
-  setupSidebarToggle();
-  setupSearchBarToggle();
-  setupNavbarLinksActive();
-  setupHeaderScrolled();
-  setupBackToTop();
-  setupTooltips();
-  setupTinyMCE();
-  setupDatatables();
-  setupEchartResize();
-};
-
-// Initialize everything on DOM load
-document.addEventListener("DOMContentLoaded", init);
-
 })();
