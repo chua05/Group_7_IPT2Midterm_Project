@@ -118,8 +118,6 @@
                             </div>
                           </div>
                         </div>
-
-
                             <!-- View Button -->
                             <button class="btn btn-primary btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#ViewModal<?php echo $row['artist_id']; ?>">View</button>
 
@@ -200,6 +198,20 @@
             </table>
           </div>
         </div>
+        <div>
+        <div class="mx-4">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="index.php">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="index.php">1</a></li>
+                  <li class="page-item"><a class="page-link" href="index.php">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="index.php">Next</a></li>
+                </ul>
+              </nav>
+            </div>
+
+
 
       </div>
     </div>
